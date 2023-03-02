@@ -8,3 +8,15 @@
     justify-content: center;
     justify-items: center;
 }
+
+.chatbox{
+    background-color: rgb(226, 218, 218);
+    height: 60vh;
+    width: 35%;
+    margin-left: 40px;
+}
+
+.row{
+    justify-content: center;
+    padding-top: 335px;
+}

@@ -5,4 +5,4 @@ const Obj = {
         'name2': 'Mrs Linda',
     }
 } // object
-const _ObjArr = [{ 'username': 'luke' }, { 'username': 'wilson' }]; //Object array
+const _ObjArr = [{ 'username': 'luke' }, { 'username': 'wilson' }]; //Object array  
