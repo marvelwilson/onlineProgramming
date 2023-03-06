@@ -12,8 +12,19 @@
 .chatbox{
     background-color: rgb(226, 218, 218);
     height: 60vh;
+
     width: 35%;
     margin-left: 40px;
+}
+
+.main-chatbox{
+    overflow:scroll;
+    height: 60vh;
+}
+
+input{
+    position: relative;
+    top: -380px;
 }
 
 .row{

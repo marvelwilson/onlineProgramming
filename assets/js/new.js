@@ -102,10 +102,33 @@ div.appendChild(form)
 document.body.appendChild(div)
 
 
-
+// var li;
+let msgArr_ = JSON.parse(localStorage.getItem('messages'))?JSON.parse(localStorage.getItem('messages')):[];
 form.onsubmit = (e)=>{
     e.preventDefault()
-    console.log(e.target[0].value)
+   const msg = e.target[0];
+   
+   if (msg.value !='clear') {
+    // alert('helo')
+   li = document.createElement('li')
+   li.innerText = msg.value;
+   mainMsg.appendChild(li)
+   msgArr_.push(msg.value)
+   msg.value=''
+   localStorage.setItem('messages', JSON.stringify(msgArr_))
+   }else if (msg.value=='clear') {
+    localStorage.removeItem('messages')
+    msg.value=''
+   }
+}
+
+//Onload event listener
+window.onload = () =>{
+    msgArr_.map((e)=>{
+        li = document.createElement('li')
+        li.innerText = e;
+        mainMsg.appendChild(li)
+    })
 }
 
 
