@@ -1,35 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Javascript Class</title>
-</head>
+  require 'header.php';
+  if (isset($_GET['msg'])) {
+    $_SESSION['userDatas']['loggedIn']=true; //parsing true when loggin is successul
 
-<body>
-    <div class="container">
-        <div class="preview jumbotron d-flex justify-content-center h2">
-            Hello world
-        </div>
+    echo "<script>
+    setTimeout(() =>{
+      window.location='dashboard.php'
+    }, 2000)
+    </script>";
+  }
+  if ($_SESSION['userDatas']['loggedIn']) {
+    header('location:dashboard.php');
+  }
+  ?>
+    <div class="container col-4 mt-5">
+            
+      <form method="POST" action='general.php'>
+      <div class="card col-lg-12">
+                <div class="card-header">
+                    Login Form<br>
+                    <small>Don't have an account ? <a href='reg.php'>Sign Up</a></small>
+                </div>
+                <div class="card-body">
+                    <?php
+                      echo @$_GET['error']?'<div class="alert alert-danger">'.ucfirst(@$_GET['error']).'</div>':'';
+                    ?>
+                    <?php
+                      echo @$_GET['msg']?'<div class="alert alert-success">'.ucfirst(@$_GET['msg']).'</div>':'';
+                    ?>
+                <div class="form-group">
+                <input type="text" name='email' placeholder="Enter Email" value="<?php echo @$_GET['email'] ?>" class="form-control col-lg-12">
+            </div>
+            <div class="form-group">
+                <input type="password" placeholder="Enter Password" name='password' class="form-control col-lg-12">
+            </div>
+            <div class="form-group">
+                <input type="submit" name='submit' value='Login' class="btn btn-success col-lg-12">
+            </div>
+                </div>
+            </div>
+      </form>
     </div>
-    <script src="/assets/js/obj.js" async></script>
-    <script src="/assets/js/main.js" async></script>
-    <script src="/assets/js/new.js" async></script>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-</body>
-
-</html>
+  <?php 
+  require 'footer.php';
+  ?>
